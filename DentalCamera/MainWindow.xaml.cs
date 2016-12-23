@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WebEye.Controls.Wpf;
 
 namespace DentalCamera
 {
@@ -20,9 +21,32 @@ namespace DentalCamera
     /// </summary>
     public partial class MainWindow : Window
     {
+        protected int contador;
         public MainWindow()
         {
             InitializeComponent();
+            ListaCamara.ItemsSource = Camara1.GetVideoCaptureDevices();
+            contador = ListaCamara.Items.Count;
+            if (contador != 0)
+            {
+                ListaCamara.SelectedItem = ListaCamara.Items[0];
+            }
+            else
+            {
+                buttonStart.IsEnabled = false;
+            }
+        }
+        private void buttonStart_Click(object sender, RoutedEventArgs e)
+        {
+            //ListaCamara.SelectedItem;
+            var cameraId = (WebCameraId)ListaCamara.SelectedItem;
+            Camara1.StartCapture(cameraId);
+            buttonCaptura.IsEnabled = true;
+        }
+
+        private void buttonCaptura_Click(object sender, RoutedEventArgs e)
+        {
+            //  BitmapImage image = new BitmapImage(Camara1.GetCurrentImage();
         }
     }
 }
