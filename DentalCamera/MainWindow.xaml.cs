@@ -46,6 +46,7 @@ namespace DentalCamera
 
         private void buttonCaptura_Click(object sender, RoutedEventArgs e)
         {
+            MessageBox.Show("hola");
             //  BitmapImage image = new BitmapImage(Camara1.GetCurrentImage();
         }
     }
