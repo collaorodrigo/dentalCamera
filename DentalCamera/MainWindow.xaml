@@ -14,10 +14,11 @@
 
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Column="1">
-            <ComboBox Grid.Column="1" x:Name="ListaCamara" HorizontalAlignment="Stretch" VerticalAlignment="Top"/>
-            <Button Grid.Column="1" x:Name="buttonStart" Content="Iniciar" HorizontalAlignment="Stretch" Height="23" Click="buttonStart_Click"/>
-            <Button Grid.Column="1" x:Name="buttonCaptura" Content="Capturar" HorizontalAlignment="Stretch" Height="23" IsEnabled="False" Click="buttonCaptura_Click"/>
+            <ComboBox Grid.Column="1" x:Name="ListaCamara" DisplayMemberPath="Name" HorizontalAlignment="Stretch" VerticalAlignment="Top" SelectionChanged="ListaCamara_SelectionChanged"/>
+            <Button Grid.Column="1" x:Name="buttonStart" Content="Iniciar" HorizontalAlignment="Stretch" Height="23" Click="buttonStart_Click" IsEnabled="False"/>
+            <Button Grid.Column="1" x:Name="buttonStop" Content="Detener" HorizontalAlignment="Stretch" Height="23" IsEnabled="{Binding Path=IsCapturing, ElementName=Camara1}" Click="buttonStop_Click"/>
+            <Button Grid.Column="1" x:Name="buttonCaptura" Content="Capturar" HorizontalAlignment="Stretch" Height="23" IsEnabled="{Binding Path=IsCapturing, ElementName=Camara1}" Click="buttonCaptura_Click"/>
         </StackPanel>
-        <Wpf:WebCameraControl Grid.Column="0" x:Name="Camara1"/><Wpf:WebCameraControl />
+        <Wpf:WebCameraControl Grid.Column="0" x:Name="Camara1"/>
     </Grid>
 </Window>
